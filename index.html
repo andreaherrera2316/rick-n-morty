@@ -3,6 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
         @font-face {
             font-family: 'Get Schwifty';
@@ -212,10 +213,31 @@
     </div>
 
     <script>
+
         function openGiftPopup() {
             const popup = document.getElementById('giftPopup');
             popup.style.display = 'flex';
+
+            // Confetti effect with higher z-index
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#97f546', '#14aec5', '#f54672'],
+                zIndex: 1001  // Higher than popup's z-index (1000)
+            });
+
+            setTimeout(() => {
+                confetti({
+                    particleCount: 50,
+                    spread: 100,
+                    origin: { y: 0.6 },
+                    colors: ['#97f546', '#14aec5', '#f54672'],
+                    zIndex: 1001
+                });
+            }, 250);
         }
+
 
         function closeGiftPopup() {
             const popup = document.getElementById('giftPopup');
